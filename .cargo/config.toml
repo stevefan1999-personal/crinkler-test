@@ -4,7 +4,7 @@ target = "i686-pc-windows-msvc"
 [target.i686-pc-windows-msvc]
 rustflags = [
     "-C", "linker=crinkler",
-    "-C", "link-args=/HASHSIZE:100 kernel32.lib user32.lib libucrt.lib libvcruntime.lib"
+    "-C", "link-args=/UNALIGNCODE /TRANSFORM:CALLS /ORDERTRIES:50 kernel32.lib user32.lib libucrt.lib libvcruntime.lib"
 ]
 
 [target.x86_64-pc-windows-msvc]

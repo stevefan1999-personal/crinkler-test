@@ -10,11 +10,17 @@ anyhow = { version = "1.0.75", default-features = false }
 libc = { version = "0.2.147", default-features = false }
 libc-print = "0.1.21"
 libc_alloc = "1.0.5"
+raw-window-handle = { version = "0.5.2", features = ["alloc"] }
 vc-ltl = "5.0.8"
-winapi = { version = "0.3.9", features = ["processthreadsapi"] }
+vulkanalia = { git = "https://github.com/stevefan1999-personal/vulkanalia", version = "0.21.0", default-features = false, features = ["core_error", "window"] }
+winapi = { version = "0.3.9", default-features = false, features = ["winuser", "processthreadsapi", "consoleapi", "heapapi", "impl-default", "impl-debug", "libloaderapi"] }
+
+[profile.dev]
+panic = "abort"
 
 [profile.release]
 strip = true
 opt-level = "s"
 lto = true
 codegen-units = 1
+panic = "abort"

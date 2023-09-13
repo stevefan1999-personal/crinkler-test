@@ -4,14 +4,14 @@ target = "i686-pc-windows-msvc"
 [target.i686-pc-windows-msvc]
 rustflags = [
     "-C", "linker=crinkler",
-    "-C", "link-args=/UNALIGNCODE /TRANSFORM:CALLS /ORDERTRIES:50 kernel32.lib user32.lib libucrt.lib libvcruntime.lib"
+    "-C", "link-args=/UNALIGNCODE /TRANSFORM:CALLS /ORDERTRIES:5 /COMPMODE:INSTANT /HASHSIZE:1000 kernel32.lib user32.lib libucrt.lib libvcruntime.lib msvcrt.lib libcmt.lib"
 ]
 
 [target.x86_64-pc-windows-msvc]
 rustflags = [
-    "-C", "link-args=user32.lib libucrt.lib libvcruntime.lib"
+    "-C", "link-args=kernel32.lib user32.lib libucrt.lib libvcruntime.lib msvcrt.lib libcmt.lib"
 ]
 
 [unstable]
-build-std = ["core", "alloc", "compiler_builtins"]
-build-std-features = ["compiler-builtins-mem"]
+build-std = ["core", "alloc", "compiler_builtins", "panic_abort"]
+build-std-features = ["compiler-builtins-mem", "panic_immediate_abort"]
